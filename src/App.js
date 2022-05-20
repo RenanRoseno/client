@@ -15,7 +15,7 @@ const App = () => {
 
   useEffect(() => {
     dispatch(getPosts());
-  }, [dispatch]);
+  }, [currentId, dispatch]);
 
   return (
     <Container>
@@ -31,7 +31,7 @@ const App = () => {
         />
       </AppBar>
       <Grow in>
-        <Container>
+        <Container key={0}>
           <Grid
             container
             justifyContent="space-between"

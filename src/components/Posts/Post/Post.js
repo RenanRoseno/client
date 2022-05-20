@@ -36,7 +36,7 @@ const Post = ({ post, setCurrentId }) => {
             setCurrentId(post._id);
           }}
         >
-          <MoreHorizIcon fontSize="default" />
+          <MoreHorizIcon fontSize="medium" />
         </Button>
       </div>
       <div className={classes.details}>
@@ -44,22 +44,25 @@ const Post = ({ post, setCurrentId }) => {
           {post.tags.map((tag) => `#${tag}`)}
         </Typography>
       </div>
+      <Typography className={classes.title} variant="h5" gutterBottom>
+          {post.title}
+        </Typography>
       <CardContent>
-        <Typography className={classes.title} variant="h5" gutterBottom>
+        <Typography variant="h5" gutterBottom>
           {post.message}
         </Typography>
-        <CardActions className={classes.cardActions}>
-          <Button size="small" color="primary" onClick={() => {}}>
-            <ThumbUpAltIcon fontSize="small" />
-            Like
-            {post.likeCount}
-          </Button>
-          <Button size="small" color="primary" onClick={() => {}}>
-            <DeleteIcon fontSize="small" />
-            Delete
-          </Button>
-        </CardActions>
       </CardContent>
+      <CardActions className={classes.cardActions}>
+        <Button size="small" color="primary" onClick={() => {}}>
+          <ThumbUpAltIcon fontSize="small" />
+          Like
+          {post.likeCount}
+        </Button>
+        <Button size="small" color="primary" onClick={() => {}}>
+          <DeleteIcon fontSize="small" />
+          Delete
+        </Button>
+      </CardActions>
     </Card>
   );
 };
