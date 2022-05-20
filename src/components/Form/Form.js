@@ -3,9 +3,10 @@ import React, { useState } from "react";
 import FileBase from "react-file-base64";
 import useStyles from "./styles";
 import { useDispatch } from "react-redux";
-import { createPost } from "../../actions/posts";
+import { createPost, updatePost } from "../../actions/posts";
 
-const Form = () => {
+
+const Form = ({ currentId, setCurrentId }) => {
   const [postData, setPostData] = useState({
     creator: "",
     title: "",
@@ -19,7 +20,11 @@ const Form = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    dispatch(createPost(postData));
+    if (currentId) {
+      dispatch(updatePost(currentId, postData));
+    } else {
+      dispatch(createPost(postData));
+    }
   };
 
   const clear = () => {};
@@ -40,7 +45,7 @@ const Form = () => {
           fullWidth
           value={postData.creator}
           onChange={(e) =>
-            setPostData({...postData, creator: e.target.value })
+            setPostData({ ...postData, creator: e.target.value })
           }
         />
         <TextField
@@ -49,7 +54,7 @@ const Form = () => {
           label="Title"
           fullWidth
           value={postData.title}
-          onChange={(e) => setPostData({...postData,  title: e.target.value })}
+          onChange={(e) => setPostData({ ...postData, title: e.target.value })}
         ></TextField>
         <TextField
           name="message"
@@ -58,7 +63,7 @@ const Form = () => {
           fullWidth
           value={postData.message}
           onChange={(e) =>
-            setPostData({...postData,  message: e.target.value })
+            setPostData({ ...postData, message: e.target.value })
           }
         ></TextField>
         <TextField
@@ -67,7 +72,7 @@ const Form = () => {
           label="Tags"
           fullWidth
           value={postData.tags}
-          onChange={(e) => setPostData({...postData,  tags: e.target.value })}
+          onChange={(e) => setPostData({ ...postData, tags: e.target.value })}
         ></TextField>
         <div className={classes.fileInput}>
           <FileBase
