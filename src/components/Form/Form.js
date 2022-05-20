@@ -2,6 +2,8 @@ import { TextField, Typography, Paper, Button } from "@material-ui/core";
 import React, { useState } from "react";
 import FileBase from "react-file-base64";
 import useStyles from "./styles";
+import { useDispatch } from "react-redux";
+import { createPost } from "../../actions/posts";
 
 const Form = () => {
   const [postData, setPostData] = useState({
@@ -11,8 +13,15 @@ const Form = () => {
     tags: "",
     selectedFile: "",
   });
+  const dispatch = useDispatch();
   const classes = useStyles();
-  const handleSubmit = () => {};
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    dispatch(createPost(postData));
+  };
+
   const clear = () => {};
 
   return (
@@ -31,16 +40,16 @@ const Form = () => {
           fullWidth
           value={postData.creator}
           onChange={(e) =>
-            setPostData(...postData, { creator: e.target.value })
+            setPostData({...postData, creator: e.target.value })
           }
-        ></TextField>
+        />
         <TextField
           name="title"
           variant="outlined"
           label="Title"
           fullWidth
           value={postData.title}
-          onChange={(e) => setPostData(...postData, { title: e.target.value })}
+          onChange={(e) => setPostData({...postData,  title: e.target.value })}
         ></TextField>
         <TextField
           name="message"
@@ -49,7 +58,7 @@ const Form = () => {
           fullWidth
           value={postData.message}
           onChange={(e) =>
-            setPostData(...postData, { message: e.target.value })
+            setPostData({...postData,  message: e.target.value })
           }
         ></TextField>
         <TextField
@@ -58,7 +67,7 @@ const Form = () => {
           label="Tags"
           fullWidth
           value={postData.tags}
-          onChange={(e) => setPostData(...postData, { tags: e.target.value })}
+          onChange={(e) => setPostData({...postData,  tags: e.target.value })}
         ></TextField>
         <div className={classes.fileInput}>
           <FileBase
