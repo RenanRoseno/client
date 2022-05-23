@@ -1,5 +1,5 @@
 const reducer = (posts = [], action) => {
-  switch (action.type) {
+  switch (action.type) {  
     case "DELETE":
       return posts.filter((post) => post._id !== action.payload);
 
