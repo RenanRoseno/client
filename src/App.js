@@ -31,7 +31,7 @@ const App = () => {
         />
       </AppBar>
       <Grow in>
-        <Container key={0}>
+        <Container>
           <Grid
             container
             justifyContent="space-between"
