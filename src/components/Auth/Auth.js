@@ -8,9 +8,11 @@ import {
   Container,
   TextField,
 } from "@material-ui/core";
+import { GoogleLogin } from "react-google-login";
 import LockOutLinedIcon from "@material-ui/icons/LockOutlined";
 import userStyles from "./styles";
 import Input from "./Input";
+import Icon from "./icon";
 
 const Auth = () => {
   const classes = userStyles();
@@ -27,6 +29,15 @@ const Auth = () => {
   const switchMode = () => {
     setIsSignUp((prevIsSignup) => !prevIsSignup);
     handleShowPassword(false);
+  };
+
+  const googleSuccess = async (res) => {
+    console.log(res);
+  };
+
+  const googleFailure = (error) => {
+    console.log(error)
+    console.log("Google error on login");
   };
 
   return (
@@ -85,6 +96,26 @@ const Auth = () => {
             >
               {isSignUp ? "Sign Up" : "Sign In"}
             </Button>
+
+            <GoogleLogin
+              clientId="719570734778-8isis2eeaercovc07tdbhrues075hond.apps.googleusercontent.com"
+              render={(renderProps) => (
+                <Button
+                  className={classes.googleButton}
+                  color="primary"
+                  fullWidth
+                  onClick={renderProps.onClick}
+                  disabled={renderProps.disabled}
+                  startIcon={<Icon />}
+                  variant="contained"
+                >
+                  Google Sign In
+                </Button>
+              )}
+              onSuccess={googleSuccess}
+              onFailure={googleFailure}
+              cookiePolicy="single_host_origin"
+            />
             <Grid container justifyContent="flex-end">
               <Grid item>
                 <Button onClick={switchMode}>
