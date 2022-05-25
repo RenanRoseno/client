@@ -6,8 +6,16 @@ import Navbar from "./components/Navbar/Navbar";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 import Home from "./components/Home/Home";
 import Auth from "./components/Auth/Auth";
+import {gapi} from "gapi-script";
 
 const App = () => {
+  gapi.load("client:auth2", () => {
+    gapi.auth2.init({
+      clientId:
+        "719570734778-8isis2eeaercovc07tdbhrues075hond.apps.googleusercontent.com",
+      plugin_name: "chat",
+    });
+  });
   return (
     <BrowserRouter>
       <Container>
