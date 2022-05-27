@@ -2,18 +2,29 @@ import React, { useState, useEffect } from "react";
 import { AppBar, Avatar, Button, Toolbar, Typography } from "@material-ui/core";
 import useStyles from "./styles";
 import { Link } from "react-router-dom";
+import { useHistory } from "react-router-dom";
+import { useDispatch } from "react-redux";
 
 const Navbar = () => {
   const classes = useStyles();
-
-  //console.log(JSON.parse(localStorage.getItem("profile")));
   const [user, setUser] = useState(JSON.parse(localStorage.getItem("profile")));
-  console.log(user)
-  useEffect(() => {
-    console.log(user);
-    const token = user?.token;
-    setUser(JSON.parse(localStorage.getItem("profile")));
-  }, []);
+  const dispatch = useDispatch();
+  const history = useHistory();
+  console.log(user);
+
+  const logout = () => {
+    dispatch({ type: "LOGOUT" });
+
+    history.push("/");
+
+    setUser(null);
+  };
+
+  // useEffect(() => {
+  //   console.log(user);
+  //   const token = user?.token;
+  //   setUser(JSON.parse(localStorage.getItem("profile")));
+  // }, []);
 
   console.log(typeof user?.result.name);
   return (
@@ -52,6 +63,7 @@ const Navbar = () => {
               variant="contained"
               className={classes.logout}
               color="secondary"
+              onClick={logout}
             >
               Logout
             </Button>
