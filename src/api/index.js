@@ -1,10 +1,14 @@
 import axios from "axios";
+import { POST, USER } from "../constants/endPoints";
 
-const url = "http://localhost:5000/post";
+const API = axios.create({ baseURL: "http://localhost:5000" });
 
-export const fetchPost = () => axios.get(url);
-export const createPost = (newPost) => axios.post(url, newPost);
+export const fetchPost = () => API.get(POST);
+export const createPost = (newPost) => API.post(POST, newPost);
 export const updatePost = (id, updatedPost) =>
-  axios.patch(`${url}/${id}`, updatedPost);
-export const deletePost = (id) => axios.delete(`${url}/${id}`);
-export const likePost = (id) => axios.patch(`${url}/${id}/like `)
+  API.patch(`${POST}/${id}`, updatedPost);
+export const deletePost = (id) => API.delete(`${POST}/${id}`);
+export const likePost = (id) => API.patch(`${POST}/${id}/like `);
+
+export const signIn = (formData) => API.post(`${USER}/signin`, formData);
+export const signUp = (formData) => API.post(`${USER}/signup`, formData);
