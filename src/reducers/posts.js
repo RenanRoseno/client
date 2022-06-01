@@ -2,6 +2,7 @@ import {
   CREATE,
   DELETE,
   FETCH_ALL,
+  FETCH_BY_SEARCH,
   LIKE,
   UPDATE,
 } from "../constants/actionTypes";
@@ -25,6 +26,8 @@ const reducer = (posts = [], action) => {
       return posts.map((post) =>
         post.id === action.payload._id ? action.payload : post
       );
+    case FETCH_BY_SEARCH:
+      return action.payload;
     default:
       return posts;
   }

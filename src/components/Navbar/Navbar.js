@@ -38,23 +38,25 @@ const Navbar = () => {
   console.log(typeof user?.result.name);
   return (
     <AppBar className={classes.appBar} position="static" color="inherit">
-      <div className={classes.brandContainer}>
+    <div className={classes.brandContainer}>
         <Typography
           component={Link}
           to="/"
           className={classes.heading}
-          variant="h2"
+          variant="h4"
           align="center"
         >
-          Memories
+          Places
         </Typography>
         <img
           className={classes.image}
-          src="/images/memories.png"
+          src="/images/icons8-planeta-terra-96.png"
           alt="memories"
-          height="60"
+          to="/"
+          height="40px"
         />
-      </div>
+      </div> 
+ 
       <Toolbar className={classes.toolbar}>
         {user ? (
           <div className={classes.profile}>
