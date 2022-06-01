@@ -13,6 +13,12 @@ API.interceptors.request.use((req) => {
   return req;
 });
 export const fetchPost = () => API.get(POST);
+export const fetchPostBySearch = (searchQuery) =>
+  API.get(
+    `${POST}/search?searchQuery=${searchQuery.search || "none"}&tags=${
+      searchQuery.tags
+    }`
+  );
 export const createPost = (newPost) => API.post(POST, newPost);
 export const updatePost = (id, updatedPost) =>
   API.patch(`${POST}/${id}`, updatedPost);
