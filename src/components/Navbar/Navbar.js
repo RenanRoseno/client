@@ -5,6 +5,8 @@ import { Link } from "react-router-dom";
 import decode from "jwt-decode";
 import { useHistory, useLocation } from "react-router-dom";
 import { useDispatch } from "react-redux";
+import InputRounded from "@material-ui/icons/InputRounded";
+import ExitToApp from "@material-ui/icons/ExitToApp";
 
 const Navbar = () => {
   const classes = useStyles();
@@ -38,7 +40,7 @@ const Navbar = () => {
   console.log(typeof user?.result.name);
   return (
     <AppBar className={classes.appBar} position="static" color="inherit">
-    <div className={classes.brandContainer}>
+      <div className={classes.brandContainer}>
         <Typography
           component={Link}
           to="/"
@@ -55,8 +57,8 @@ const Navbar = () => {
           to="/"
           height="40px"
         />
-      </div> 
- 
+      </div>
+
       <Toolbar className={classes.toolbar}>
         {user ? (
           <div className={classes.profile}>
@@ -76,7 +78,8 @@ const Navbar = () => {
               color="secondary"
               onClick={logout}
             >
-              Logout
+              Logout &nbsp; 
+              <ExitToApp fontSize="medium" />
             </Button>
           </div>
         ) : (
@@ -86,7 +89,8 @@ const Navbar = () => {
             variant="contained"
             color="primary"
           >
-            Sign in
+            Sign in &nbsp;
+            <InputRounded fontSize="medium" />
           </Button>
         )}
       </Toolbar>

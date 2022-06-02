@@ -17,7 +17,9 @@ import Form from "../Form/Form";
 import { getPosts, getPostsBySearch } from "../../actions/posts";
 import Pagination from "../Pagination";
 
+
 import useStyles from "./styles";
+import Search from "@material-ui/icons/Search";
 
 function useQuery() {
   return new URLSearchParams(useLocation().search);
@@ -100,13 +102,15 @@ const Home = () => {
                 color="primary"
                 variant="contained"
               >
-                Search
+                <Search fontSize="medium" />
               </Button>
             </AppBar>
             <Form currentId={currentId} setCurrentId={setCurrentId} />
-            <Paper elevation={6}>
-              <Pagination page={page} />
-            </Paper>
+            {!searchQuery && !tags.length && (
+              <Paper elevation={6}>
+                <Pagination page={page} className={classes.pagination} />
+              </Paper>
+            )}
           </Grid>
         </Grid>
       </Container>
