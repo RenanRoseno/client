@@ -8,9 +8,10 @@ import {
   UPDATE,
 } from "../constants/actionTypes";
 
-export const getPosts = () => async (dispatch) => {
+export const getPosts = (page) => async (dispatch) => {
   try {
-    const { data } = await api.fetchPost();
+    const { data } = await api.fetchPost(page);
+    console.log(data);
     const action = { type: FETCH_ALL, payload: data };
 
     dispatch(action);
