@@ -13,6 +13,14 @@ import {
 
 const reducer = (state = { isLoading: true, posts: [] }, action) => {
   switch (action.type) {
+    case FETCH_ALL:
+      return {
+        ...state,
+        posts: action.payload.data,
+        currentPage: action.payload.currentPage,
+        numberOfPages: action.payload.numberOfPage,
+      };
+
     case START_LOADING:
       return { ...state, isLoading: true };
 
@@ -23,14 +31,6 @@ const reducer = (state = { isLoading: true, posts: [] }, action) => {
       return {
         ...state,
         posts: state.posts.filter((post) => post._id !== action.payload),
-      };
-
-    case FETCH_ALL:
-      return {
-        ...state,
-        posts: action.payload.data,
-        currentPage: action.payload.currentPage,
-        numberOfPages: action.payload.numberOfPages,
       };
 
     case CREATE:
@@ -57,7 +57,7 @@ const reducer = (state = { isLoading: true, posts: [] }, action) => {
     case UPDATE:
       return {
         ...state,
-        posts: state.map((post) =>
+        posts: state.posts.map((post) =>
           post.id === action.payload._id ? action.payload : post
         ),
       };

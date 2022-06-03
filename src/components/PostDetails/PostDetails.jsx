@@ -39,7 +39,6 @@ const PostDetails = () => {
       </Paper>
     );
   }
-  console.log("POst details");
 
   const recommendedPosts = posts.filter(({ _id }) => _id !== post._id);
 
@@ -85,7 +84,7 @@ const PostDetails = () => {
       {!!recommendedPosts.length && (
         <div className={classes.section}>
           <Typography gutterBottom variant="h5">
-            Veja também<menu type="context"></menu>:
+            Veja também:<menu type="context"></menu>
           </Typography>
           <Divider />
           <div className={classes.recommendedPosts}>

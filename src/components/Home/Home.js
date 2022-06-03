@@ -17,7 +17,6 @@ import Form from "../Form/Form";
 import { getPosts, getPostsBySearch } from "../../actions/posts";
 import Pagination from "../Pagination";
 
-
 import useStyles from "./styles";
 import Search from "@material-ui/icons/Search";
 
@@ -36,8 +35,10 @@ const Home = () => {
   const [search, setSearch] = useState("");
   const [tags, setTags] = useState([]);
 
+  console.log(page);
   const searchPost = () => {
-    if ((search.trim() && search.length > 0) || tags.length > 0) {
+    // if ((search.trim() && search.length > 0) || tags.length > 0) {
+    if (search.trim() || tags) {
       dispatch(getPostsBySearch({ search, tags: tags.join(",") }));
       history.push(
         `/posts/search?searchQuery=${search || "none"}&tags=${tags.join(",")}`
