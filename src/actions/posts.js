@@ -8,6 +8,7 @@ import {
   LIKE,
   START_LOADING,
   UPDATE,
+  FETCH_POST
 } from "../constants/actionTypes";
 
 export const getPosts = (page) => async (dispatch) => {
@@ -17,6 +18,21 @@ export const getPosts = (page) => async (dispatch) => {
     const { data } = await api.fetchPost(page);
     console.log(data);
     const action = { type: FETCH_ALL, payload: data };
+
+    dispatch(action);
+    dispatch({ type: END_LOADING });
+  } catch (error) {
+    console.log(error.message);
+  }
+};
+
+export const getPost = (id) => async (dispatch) => {
+  try {
+    dispatch({ type: START_LOADING });
+
+    const { data } = await api.fetchPostById(id);
+    console.log(data);
+    const action = { type: FETCH_POST, payload: data };
 
     dispatch(action);
     dispatch({ type: END_LOADING });
@@ -41,11 +57,12 @@ export const getPostsBySearch = (searchQuery) => async (dispatch) => {
   }
 };
 
-export const createPost = (post) => async (dispatch) => {
+export const createPost = (post, history) => async (dispatch) => {
   try {
     dispatch({ type: START_LOADING });
     const { data } = await api.createPost(post);
 
+    history.push(`/posts/${data._id}`);
     dispatch({ type: CREATE, payload: data });
     dispatch({ type: END_LOADING });
   } catch (error) {

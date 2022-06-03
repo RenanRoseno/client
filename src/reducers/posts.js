@@ -7,6 +7,7 @@ import {
   LIKE,
   START_LOADING,
   UPDATE,
+  FETCH_POST,
 } from "../constants/actionTypes";
 
 const reducer = (state = { isLoading: true, posts: [] }, action) => {
@@ -32,12 +33,12 @@ const reducer = (state = { isLoading: true, posts: [] }, action) => {
       };
 
     case CREATE:
-      return { ...state, posts: [...state, action.payload] };
+      return { ...state, posts: [...state.posts, action.payload] };
 
     case LIKE:
       return {
         ...state,
-        posts: state.map((post) =>
+        posts: state.posts.map((post) =>
           post._id === action.payload._id ? action.payload : post
         ),
       };
@@ -52,6 +53,10 @@ const reducer = (state = { isLoading: true, posts: [] }, action) => {
 
     case FETCH_BY_SEARCH:
       return { ...state, posts: action.payload };
+
+    case FETCH_POST:
+      return { ...state, post: action.payload };
+
     default:
       return state;
   }
