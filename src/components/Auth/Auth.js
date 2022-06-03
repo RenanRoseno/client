@@ -80,21 +80,23 @@ const Auth = () => {
         <Avatar className={classes.avatar}>
           <LockOutLinedIcon></LockOutLinedIcon>
         </Avatar>
-        <Typography variant="h5">{isSignUp ? `Sign Up` : `Sign in`}</Typography>
+        <Typography variant="h5">
+          {isSignUp ? "Cadastrar" : "Entrar"}
+        </Typography>
         <form className={classes.form} onSubmit={handleSubmit}>
           <Grid container spacing={2}>
             {isSignUp && (
               <>
                 <Input
                   name="firstName"
-                  label="First Name"
+                  label="Nome"
                   handleChange={handleChange}
                   autoFocus
                   half
                 />
                 <Input
                   name="lastName"
-                  label="Last Name"
+                  label="Sobrenome"
                   handleChange={handleChange}
                   half
                 />
@@ -102,13 +104,13 @@ const Auth = () => {
             )}
             <Input
               name="email"
-              label="Email Address"
+              label="Email"
               handleChange={handleChange}
               type="email"
             />
             <Input
               name="password"
-              label="Password"
+              label="Senha"
               handleChange={handleChange}
               type={showPassword ? "text" : "password"}
               handleShowPassword={handleShowPassword}
@@ -116,7 +118,7 @@ const Auth = () => {
             {isSignUp && (
               <Input
                 name="confirmPassword"
-                label="Repeat Password"
+                label="Confirme a senha"
                 handleChange={handleChange}
                 type="password"
               />
@@ -128,7 +130,7 @@ const Auth = () => {
               color="primary"
               className={classes.submit}
             >
-              {isSignUp ? "Sign Up" : "Sign In"}
+              {isSignUp ? "Cadastrar" : "Entrar"}
             </Button>
 
             <GoogleLogin
@@ -143,7 +145,7 @@ const Auth = () => {
                   startIcon={<Icon />}
                   variant="contained"
                 >
-                  Google Sign In
+                  Entrar com google
                 </Button>
               )}
               onSuccess={googleSuccess}
@@ -154,8 +156,8 @@ const Auth = () => {
               <Grid item>
                 <Button onClick={switchMode}>
                   {isSignUp
-                    ? "Already have an account? Sign In"
-                    : "Don't have an account? Sign Up"}
+                    ? "Já tem uma conta? Entre"
+                    : "Ainda não tem uma conta? Cadastre-se"}
                 </Button>
               </Grid>
             </Grid>

@@ -54,7 +54,7 @@ const Form = ({ currentId, setCurrentId }) => {
     return (
       <Paper className={classes.paper}>
         <Typography variant="h6" align="center">
-          Please Sign in to create own memories and like other's memories
+         Entre ou cadastre-se para aproveitar mais lugares e funcionalidades.
         </Typography>
       </Paper>
     );
@@ -70,12 +70,12 @@ const Form = ({ currentId, setCurrentId }) => {
       >
         <Typography variant="h6">
           {" "}
-          {currentId ? "Editing" : "Creating"} a Memory
+          {currentId ? "Editar" : "Criar"}
         </Typography>
         <TextField
           name="title"
           variant="outlined"
-          label="Title"
+          label="Título"
           fullWidth
           value={postData.title}
           onChange={(e) => setPostData({ ...postData, title: e.target.value })}
@@ -83,7 +83,7 @@ const Form = ({ currentId, setCurrentId }) => {
         <TextField
           name="message"
           variant="outlined"
-          label="Message"
+          label="Descrição"
           fullWidth
           multiline
           minRows={4}
@@ -119,7 +119,7 @@ const Form = ({ currentId, setCurrentId }) => {
           color="primary"
           fullWidth
         >
-          Submit
+          Salvar
         </Button>
         <Button
           variant="contained"
@@ -128,7 +128,7 @@ const Form = ({ currentId, setCurrentId }) => {
           color="secondary"
           fullWidth
         >
-          Clear
+          Limpar
         </Button>
       </form>
     </Paper>

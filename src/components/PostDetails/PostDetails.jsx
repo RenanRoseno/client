@@ -63,16 +63,12 @@ const PostDetails = () => {
           <Typography gutterBottom variant="body1" component="p">
             {post.message}
           </Typography>
-          <Typography variant="h6">Created by: {post.name}</Typography>
+          <Typography variant="h6">Criado por: {post.name}</Typography>
           <Typography variant="body1">
             {moment(post.createdAt).fromNow()}
           </Typography>
           <Divider style={{ margin: "20px 0" }} />
-          <Typography variant="body1">
-            <strong>Realtime Chat - coming soon!</strong>
-          </Typography>
-          <Divider style={{ margin: "20px 0" }} />
-           <CommentSection post={post} />
+          <CommentSection post={post} />
           <Divider style={{ margin: "20px 0" }} />
         </div>
         <div className={classes.imageSection}>
@@ -89,7 +85,7 @@ const PostDetails = () => {
       {!!recommendedPosts.length && (
         <div className={classes.section}>
           <Typography gutterBottom variant="h5">
-            You migth also like:
+            Veja também<menu type="context"></menu>:
           </Typography>
           <Divider />
           <div className={classes.recommendedPosts}>
@@ -110,7 +106,7 @@ const PostDetails = () => {
                     {message}
                   </Typography>
                   <Typography gutterBottom variant="subtitle1">
-                    Likes: {likes.length}
+                    Curtidas: {likes.length}
                   </Typography>
                   <img src={selectedFile} width="200px" />
                 </div>

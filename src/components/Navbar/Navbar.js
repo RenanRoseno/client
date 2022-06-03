@@ -78,7 +78,7 @@ const Navbar = () => {
               color="secondary"
               onClick={logout}
             >
-              Logout &nbsp; 
+              Sair &nbsp; 
               <ExitToApp fontSize="medium" />
             </Button>
           </div>
@@ -89,7 +89,7 @@ const Navbar = () => {
             variant="contained"
             color="primary"
           >
-            Sign in &nbsp;
+            Entrar &nbsp;
             <InputRounded fontSize="medium" />
           </Button>
         )}
