@@ -13,7 +13,7 @@ API.interceptors.request.use((req) => {
   return req;
 });
 
-export const fetchPostById = (id) => API.get(`${POST}/${id}`)
+export const fetchPostById = (id) => API.get(`${POST}/${id}`);
 export const fetchPost = (page) => API.get(`${POST}?page=${page}`);
 export const fetchPostBySearch = (searchQuery) =>
   API.get(
@@ -26,6 +26,8 @@ export const updatePost = (id, updatedPost) =>
   API.patch(`${POST}/${id}`, updatedPost);
 export const deletePost = (id) => API.delete(`${POST}/${id}`);
 export const likePost = (id) => API.patch(`${POST}/${id}/like `);
+export const comment = (value, id) =>
+  API.post(`${POST}/${id}/comment`, { value });
 
 export const signIn = (formData) => API.post(`${USER}/signin`, formData);
 export const signUp = (formData) => API.post(`${USER}/signup`, formData);

@@ -48,7 +48,7 @@ const Navbar = () => {
           variant="h4"
           align="center"
         >
-          Places
+          My Places
         </Typography>
         <img
           className={classes.image}
