@@ -11,7 +11,6 @@ import {
 import ThumbUpAltIcon from "@material-ui/icons/ThumbUpAlt";
 import ThumbUpAltOutlined from "@material-ui/icons/ThumbUpAltOutlined";
 import DeleteIcon from "@material-ui/icons/Delete";
-import MoreHorizIcon from "@material-ui/icons/MoreHoriz";
 import Edit from "@material-ui/icons/Edit";
 import moment from "moment";
 import useStyles from "./styles";
@@ -46,9 +45,6 @@ const Post = ({ post, setCurrentId }) => {
         <>
           <ThumbUpAltIcon fontSize="small" />
           &nbsp; {likes.length}
-          {/*} {likes.length > 2
-            ? `You and ${likes.length - 1} others`
-            : `${likes.length} like${likes.length > 1 ? "s" : ""}`} */}
         </>
       ) : (
         <>
