@@ -35,9 +35,7 @@ const Home = () => {
   const [search, setSearch] = useState("");
   const [tags, setTags] = useState([]);
 
-  console.log(page);
   const searchPost = () => {
-    // if ((search.trim() && search.length > 0) || tags.length > 0) {
     if (search.trim() || tags) {
       dispatch(getPostsBySearch({ search, tags: tags.join(",") }));
       history.push(

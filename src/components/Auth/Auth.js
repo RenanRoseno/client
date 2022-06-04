@@ -36,7 +36,6 @@ const Auth = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    console.log(formData);
     if (isSignUp) {
       dispatch(signup(formData, history));
     } else {
@@ -59,7 +58,7 @@ const Auth = () => {
   const googleSuccess = async (res) => {
     const result = res?.profileObj;
     const token = res?.tokenId;
-    console.log(result);
+  
     try {
       dispatch({ type: AUTH, data: { result, token } });
 
@@ -70,7 +69,6 @@ const Auth = () => {
   };
 
   const googleFailure = (error) => {
-    console.log(error);
     console.log("Google error on login");
   };
 

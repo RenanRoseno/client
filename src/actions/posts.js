@@ -17,7 +17,7 @@ export const getPosts = (page) => async (dispatch) => {
     dispatch({ type: START_LOADING });
 
     const { data } = await api.fetchPost(page);
-    console.log(data);
+
     const action = { type: FETCH_ALL, payload: data };
 
     dispatch(action);
@@ -32,7 +32,7 @@ export const getPost = (id) => async (dispatch) => {
     dispatch({ type: START_LOADING });
 
     const { data } = await api.fetchPostById(id);
-    console.log(data);
+
     const action = { type: FETCH_POST, payload: data };
 
     dispatch(action);
@@ -106,9 +106,8 @@ export const commentPost = (value, id) => async (dispatch) => {
     const { data } = await api.comment(value, id);
 
     dispatch({ type: COMMENT, payload: data });
-    console.log(data);
+
     return data.comments;
-    
   } catch (error) {
     console.log(error);
   }

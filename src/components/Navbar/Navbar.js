@@ -15,8 +15,6 @@ const Navbar = () => {
   const history = useHistory();
   const location = useLocation();
 
-  console.log(user);
-
   const logout = () => {
     dispatch({ type: "LOGOUT" });
 
@@ -26,7 +24,6 @@ const Navbar = () => {
   };
 
   useEffect(() => {
-    console.log(user);
     const token = user?.token;
 
     if (token) {
@@ -37,7 +34,6 @@ const Navbar = () => {
     setUser(JSON.parse(localStorage.getItem("profile")));
   }, [location]);
 
-  console.log(typeof user?.result.name);
   return (
     <AppBar className={classes.appBar} position="static" color="inherit">
       <div className={classes.brandContainer}>
@@ -78,7 +74,7 @@ const Navbar = () => {
               color="secondary"
               onClick={logout}
             >
-              Sair &nbsp; 
+              Sair &nbsp;
               <ExitToApp fontSize="medium" />
             </Button>
           </div>

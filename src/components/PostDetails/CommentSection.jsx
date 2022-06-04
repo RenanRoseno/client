@@ -5,7 +5,6 @@ import useStyles from "./styles";
 import { commentPost } from "../../actions/posts";
 
 const CommentSection = ({ post }) => {
-  console.log("comment Section");
   const classes = useStyles();
   const [comments, setComments] = useState(post?.comments);
   const [comment, setComment] = useState("");
@@ -20,7 +19,7 @@ const CommentSection = ({ post }) => {
 
     setComments(newComments);
     setComment("");
-    commentsRef.current.scrollIntoView({ behaviour : 'smooth'})
+    commentsRef.current.scrollIntoView({ behaviour: "smooth" });
   };
   return (
     <div>
@@ -31,8 +30,8 @@ const CommentSection = ({ post }) => {
           </Typography>
           {comments.map((c, i) => (
             <Typography key={i} gutterBottom variant="subtitle1">
-              <strong>{c.split(':')[0]}</strong>
-              {c.split(':')[1]}
+              <strong>{c.split(":")[0]}</strong>
+              {c.split(":")[1]}
             </Typography>
           ))}
           <div ref={commentsRef} />

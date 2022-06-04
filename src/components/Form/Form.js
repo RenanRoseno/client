@@ -28,7 +28,7 @@ const Form = ({ currentId, setCurrentId }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(currentId);
+
     if (currentId) {
       dispatch(
         updatePost(currentId, { ...postData, name: user?.result?.name })
@@ -54,7 +54,7 @@ const Form = ({ currentId, setCurrentId }) => {
     return (
       <Paper className={classes.paper}>
         <Typography variant="h6" align="center">
-         Entre ou cadastre-se para aproveitar mais lugares e funcionalidades.
+          Entre ou cadastre-se para aproveitar mais lugares e funcionalidades.
         </Typography>
       </Paper>
     );
@@ -68,10 +68,7 @@ const Form = ({ currentId, setCurrentId }) => {
         className={`${classes.root} ${classes.form}`}
         onSubmit={handleSubmit}
       >
-        <Typography variant="h6">
-          {" "}
-          {currentId ? "Editar" : "Criar"}
-        </Typography>
+        <Typography variant="h6"> {currentId ? "Editar" : "Criar"}</Typography>
         <TextField
           name="title"
           variant="outlined"
